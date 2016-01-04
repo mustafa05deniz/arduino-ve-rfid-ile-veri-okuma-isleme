@@ -11,11 +11,11 @@ int okunanVeri;
 
 #define led1 7
 #define led2 5
-MFRC522 mfrc522(SS_PIN, RST_PIN); // kartın _ id kısmı buraya yazılacaktır . 
+MFRC522 mfrc522(SS_PIN, RST_PIN); 
  
 MFRC522::MIFARE_Key key;
 
- int liste[] = {9,7,7,1,3,9,1,6,4};
+ int liste[] = {9,7,7,1,3,9,1,6,4};  // kartın _ id kısmı buraya yazılacaktır . bu yazılanları silip yerine kendinizkini yazınız .
 void setup()
 {
   pinMode(led1,OUTPUT);
