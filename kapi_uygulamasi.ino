@@ -11,7 +11,7 @@ int okunanVeri;
 
 #define led1 7
 #define led2 5
-MFRC522 mfrc522(SS_PIN, RST_PIN);
+MFRC522 mfrc522(SS_PIN, RST_PIN); // kartın _ id kısmı buraya yazılacaktır . 
  
 MFRC522::MIFARE_Key key;
 
