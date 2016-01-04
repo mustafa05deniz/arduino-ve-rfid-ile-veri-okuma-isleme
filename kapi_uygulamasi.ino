@@ -11,11 +11,11 @@ int okunanVeri;
 
 #define led1 7
 #define led2 5
-MFRC522 mfrc522(SS_PIN, RST_PIN); 
+MFRC522 mfrc522(SS_PIN, RST_PIN);
  
 MFRC522::MIFARE_Key key;
 
- int liste[] = {9,7,7,1,3,9,1,6,4};  // kartın _ id kısmı buraya yazılacaktır . bu yazılanları silip yerine kendinizkini yazınız .
+ int liste[] = {9,7,7,1,3,9,1,6,4}; // sizin kartınızın id sini buraya yazınız . 
 void setup()
 {
   pinMode(led1,OUTPUT);
@@ -65,8 +65,46 @@ int getID() {
   //kartın UID'sini byte byte oku ve seri monitöre yaz
   for (int i = 0; i < mfrc522.uid.size; i++) {  //
     readCard[i] = mfrc522.uid.uidByte[i];
-    
     Serial.print(readCard[i]);
+    for (int j = 0; i < mfrc522.uid.size;j++){
+      if (i == j ){
+
+        if(readCard[i] == liste[j]){
+          mfrc522.PICC_HaltA();
+          Serial.println("Kart bulundu");
+          digitalWrite(led2,HIGH);
+          tone(6, 444, 500);
+          delay(400);
+          noTone(6);
+          digitalWrite(led2,LOW);
+          return 1;
+          
+        }
+        else{ 
+          mfrc522.PICC_HaltA();
+          Serial.println("Yanlis Kart");
+          digitalWrite(led1,HIGH);
+          tone(6, 1000, 500);
+          delay(1000);
+          tone(6, 1000, 500);
+          delay(1000);
+          tone(6, 1000, 500);
+          
+          
+          
+          
+          delay(400);
+          noTone(6);
+          digitalWrite(led1,LOW);
+          return 1;
+        }
+        
+        
+        
+      }
+      
+     
+    }
     
 
     
