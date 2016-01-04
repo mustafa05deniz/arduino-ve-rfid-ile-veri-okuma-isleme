@@ -15,7 +15,6 @@ MFRC522 mfrc522(SS_PIN, RST_PIN);
  
 MFRC522::MIFARE_Key key;
 
- int liste[] = {9,7,7,1,3,9,1,6,4};
 void setup()
 {
   pinMode(led1,OUTPUT);
